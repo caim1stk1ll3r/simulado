@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+</head>
+<body>
+
+<h1>Calculadora</h1>
+    <!-- ACTION => para onde os dados vao
+        METHOD => como eles vao-->
+    <form action="" method="POST">
+
+    <label for="nome">Km de ida: {{ ida }}</label>
+    <input type="number" name="ida" id="ida">
+    <br><br>
+    <label for="numero1">Km de volta: {{ volta }}</label>
+    <input type="number" step="0.01" name="volta" id="volta">
+    <br>
+    <label for="numero2">Dias de deslocamento por semana: {{ dias }}</label>
+    <input type="number" name="dias" id="dias">
+    <br>
+    <label for="numero2">Meio de transporte: {{ meio }}</label>
+    <select class="form-select" id="meio" name="meio">
+    <option value="">-- Selecione --</option>
+    {# value="" para a opção padrão: permite verificar se o usuário selecionou algo #}
+    <option value="bipe">Bicicleta ou a pé</option>
+    <option value="byd">Carro elétrico</option>
+    <option value="onibus">Ônibus</option>
+    <option value="moto">Moto</option>
+    <option value="carro">Carro a gasolina</option>
+  </select>
+
+    {% if meio == bipe %}
+        {{fator = 0.00}}
+
+    {% if meio == byd %}
+        {{fator = 0.05}}
+
+    {% if meio == onibus %}
+        {{fator = 0.07}}
+
+    {% if meio == moto %}
+        {{fator = 0.10}}
+
+    {% if meio == carro %}
+        {{fator = 0.20}}
+
+
+    <br><br>
+    <button type="submit">CALCULAR</button>
+
+    </form>
+    
+</body>
+</html>
